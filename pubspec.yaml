@@ -1,7 +1,7 @@
 name: flutter_page_view_indicator
 description: A new Flutter plugin.
 version: 0.0.1
-homepage: https://github.com/elbeicktalat/flutter_page_view_indicator.git
+homepage: https://github.com/elbeicktalat/flutter_page_view_indicator
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
