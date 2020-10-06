@@ -48,10 +48,52 @@ class PageViewIndicator extends StatefulWidget {
   _PageViewIndicatorState createState() => _PageViewIndicatorState();
 }
 
+List<Widget> _buildIndicators({
+  int length,
+  int currentIndex,
+  Color currentItemColor,
+  Color otherItemColor,
+  double currentItemWidth,
+  double currentItemHeight,
+  double otherItemWidth,
+  double otherItemHeight,
+  EdgeInsets indicatorMargin,
+  BorderRadius borderRadius,
+}) {
+  List<Widget> indicators = [];
+  for (int i = 0; i < length; i++) {
+    indicators.add(
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: borderRadius,
+          color: (i == currentIndex) ? currentItemColor : otherItemColor,
+        ),
+        margin: indicatorMargin,
+        width: (i == currentIndex) ? currentItemWidth : currentItemHeight,
+        height: (i == currentIndex) ? otherItemWidth : otherItemHeight,
+      ),
+    );
+  }
+  return indicators;
+}
 
 class _PageViewIndicatorState extends State<PageViewIndicator> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: _buildIndicators(
+        length: widget.length,
+        currentIndex: widget.currentIndex,
+        currentItemColor: widget.currentItemColor,
+        otherItemColor: widget.otherItemColor,
+        currentItemWidth: widget.currentItemWidth,
+        currentItemHeight: widget.currentItemHeight,
+        otherItemWidth: widget.currentItemWidth,
+        otherItemHeight: widget.otherItemHeight,
+        indicatorMargin: widget.indicatorMargin,
+        borderRadius: widget.borderRadius,
+      ),
+    );
   }
 }
