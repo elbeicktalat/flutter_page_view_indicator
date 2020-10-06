@@ -1,15 +1,53 @@
-# flutter_page_view_indicator
+# Flutter PageViewIndicator
 
-A new Flutter plugin.
+Builds indicators marks for PageView from any widget very customizable.
 
-## Getting Started
+To get started you need to install our plugin and that's very easy
+## Installation
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+- add this to your packages pubspec.yaml file: 
+```
+flutter_page_view_indicator: ^0.0.1
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Install it 
+You can install it from the command line:
+```
+$ flutter pub get
+```
+if you use Android Studio or Intellij just click pub get.
 
+- Import it 
+Now in Dart code, you can use:
+```
+import 'package:flutter_page_view_indicator/flutter_page_view_indicator.dart';
+```
+
+## Using
+ 
+You need to use just the following code: 
+```
+PageViewIndicator(
+    length: screens.length,
+    currentIndex: currentIndex,
+),
+```
+this a default indicators, when you want to customize the indicators 
+you can do it just passing a Features which you want.
+
+This an Example of a full features :
+```
+PageViewIndicator(
+    length: screens.length,
+    currentIndex: currentIndex,
+    currentItemColor: Colors.teal,
+    otherItemColor: Colors.grey.shade800,
+    currentItemWidth: 15,
+    currentItemHeight: 15,
+    otherItemWidth: 15,
+    otherItemHeight: 15,
+    indicatorMargin: EdgeInsets.all(5),
+    borderRadius: BorderRadius.circular(9999),
+),
+```
+So how did you see you do not need to write too much code in the first case if you use the default indicators.
