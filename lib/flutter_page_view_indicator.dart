@@ -69,8 +69,8 @@ List<Widget> _buildIndicators({
           color: (i == currentIndex) ? currentItemColor : otherItemColor,
         ),
         margin: indicatorMargin,
-        width: (i == currentIndex) ? currentItemWidth : currentItemHeight,
-        height: (i == currentIndex) ? otherItemWidth : otherItemHeight,
+        width: (i == currentIndex) ? currentItemWidth : otherItemWidth,
+        height: (i == currentIndex) ? currentItemHeight : otherItemHeight,
       ),
     );
   }
@@ -89,7 +89,7 @@ class _PageViewIndicatorState extends State<PageViewIndicator> {
         otherItemColor: widget.otherItemColor,
         currentItemWidth: widget.currentItemWidth,
         currentItemHeight: widget.currentItemHeight,
-        otherItemWidth: widget.currentItemWidth,
+        otherItemWidth: widget.otherItemWidth,
         otherItemHeight: widget.otherItemHeight,
         indicatorMargin: widget.indicatorMargin,
         borderRadius: widget.borderRadius,
