@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
                 length: screens.length,
                 currentIndex: currentIndex,
                 indicatorMargin: EdgeInsets.all(5),
-                borderRadius: BorderRadius.circular(9999),
+                borderRadius: BorderRadius.circular(5),
               ),
             ),
           ],
