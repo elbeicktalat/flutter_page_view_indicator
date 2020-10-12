@@ -80,8 +80,6 @@ class _MyAppState extends State<MyApp> {
               child: PageViewIndicator(
                 length: screens.length,
                 currentIndex: currentIndex,
-                indicatorMargin: EdgeInsets.all(5),
-                borderRadius: BorderRadius.circular(5),
               ),
             ),
           ],
