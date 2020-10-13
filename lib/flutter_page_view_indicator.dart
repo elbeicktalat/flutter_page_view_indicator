@@ -46,9 +46,9 @@ class PageViewIndicator extends StatefulWidget {
   /// the default value is [500 milliseconds].
   final Duration animationDuration;
 
-  ///[direction] Defines the indicators direction,
+  ///[orientation] Defines the indicators orientation,
   /// the default value is [Axis.horizontal].
-  final Axis direction;
+  final Axis orientation;
 
   PageViewIndicator({
     @required this.length,
@@ -63,7 +63,7 @@ class PageViewIndicator extends StatefulWidget {
     this.borderRadius,
     this.alignment = MainAxisAlignment.center,
     this.animationDuration,
-    this.direction = Axis.horizontal,
+    this.orientation = Axis.horizontal,
   });
 
   @override
@@ -100,7 +100,7 @@ class _PageViewIndicatorState extends State<PageViewIndicator> {
         ),
       );
     }
-    if (widget.direction != Axis.horizontal) {
+    if (widget.orientation != Axis.horizontal) {
       return Column(
         mainAxisAlignment: widget.alignment,
         children: indicators,
