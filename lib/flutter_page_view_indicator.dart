@@ -8,34 +8,26 @@ class PageViewIndicator extends StatefulWidget {
   final int currentIndex;
 
   ///[currentColor] is a current index color of the [PageView].
-  final Color currentItemColor;
+  final Color currentColor;
 
   ///[otherColor] is a other index color of the [PageView].
-  final Color otherItemColor;
+  final Color otherColor;
 
-  ///[currentItemWidth] is a normal width, need it to define a indicators
-  ///width of the [currentIndex], the default value is [15.0].
-  final double currentItemWidth;
+  ///[currentSize] define the indicators size of the [currentIndex],
+  /// the default value is [15.0].
+  final double currentSize;
 
-  ///[currentItemHeight] is a normal height, need it to define a indicators
-  /// height of the [currentIndex], the default value is [15.0].
-  final double currentItemHeight;
+  ///[otherSize] define the indicators size of the [otherItem],
+  /// the default value is [8.0].
+  final double otherSize;
 
-  ///[otherItemWidth] is a normal width, need it to define a indicators
-  /// width of the [otherIndex],  the default value is [8.0].
-  final double otherItemWidth;
-
-  ///[otherItemHeight] is a normal height, need it to define a indicators
-  /// height of the [otherIndex],  the default value is [8.0].
-  final double otherItemHeight;
-
-  ///[indicatorMargin] is a margin around each indicator,
+  ///[margin] is a margin around each indicator,
   /// the default value is [EdgeInsets.all(5)].
-  final EdgeInsets indicatorMargin;
+  final EdgeInsets? margin;
 
   ///[borderRadius] Defines a border radius of each indicator,
   /// the default value is [BorderRadius.circular(9999)].
-  final BorderRadius borderRadius;
+  final double? borderRadius;
 
   ///[alignment] is a normal alignment, define How the children should be placed
   ///along the main axis in a flex layout,
@@ -44,25 +36,23 @@ class PageViewIndicator extends StatefulWidget {
 
   ///[animationDuration] Defines how long does the animation,
   /// the default value is [500 milliseconds].
-  final Duration animationDuration;
+  final Duration? animationDuration;
 
   ///[orientation] Defines the indicators orientation,
   /// the default value is [Axis.horizontal].
   final Axis orientation;
 
-  PageViewIndicator({
-    @required this.length,
-    @required this.currentIndex,
-    this.currentItemColor = Colors.blue,
-    this.otherItemColor = Colors.grey,
-    this.currentItemWidth = 15.0,
-    this.currentItemHeight = 15.0,
-    this.otherItemWidth = 8.0,
-    this.otherItemHeight = 8.0,
-    this.indicatorMargin,
-    this.borderRadius,
+  const PageViewIndicator({
+    required this.length,
+    required this.currentIndex,
+    this.currentColor = Colors.blue,
+    this.otherColor = Colors.grey,
+    this.currentSize = 15.0,
+    this.otherSize = 8.0,
+    this.margin,
+    this.borderRadius = 9999,
     this.alignment = MainAxisAlignment.center,
-    this.animationDuration,
+    this.animationDuration = const Duration(milliseconds: 500),
     this.orientation = Axis.horizontal,
   });
 
@@ -71,32 +61,30 @@ class PageViewIndicator extends StatefulWidget {
 }
 
 class _PageViewIndicatorState extends State<PageViewIndicator> {
+  Color getColor(int index) {
+    if (index == widget.currentIndex) return widget.currentColor;
+    return widget.otherColor;
+  }
+
+  double getDotSize(int index) {
+    if (index == widget.currentIndex) return widget.currentSize;
+    return widget.otherSize;
+  }
+
   @override
   Widget build(BuildContext context) {
-    List<Widget> indicators = List<Widget>();
-    for (int i = 0; i < widget.length; i++) {
+    List<Widget> indicators = <Widget>[];
+    for (int index = 0; index < widget.length; index++) {
       indicators.add(
         AnimatedContainer(
-          duration: (widget.animationDuration != null)
-              ? widget.animationDuration
-              : Duration(milliseconds: 500),
+          duration: widget.animationDuration!,
           decoration: BoxDecoration(
-            borderRadius: (widget.borderRadius != null)
-                ? widget.borderRadius
-                : BorderRadius.circular(9999),
-            color: (i == widget.currentIndex)
-                ? widget.currentItemColor
-                : widget.otherItemColor,
+            borderRadius: BorderRadius.circular(widget.borderRadius!),
+            color: getColor(index),
           ),
-          margin: (widget.indicatorMargin != null)
-              ? widget.indicatorMargin
-              : EdgeInsets.all(5),
-          width: (i == widget.currentIndex)
-              ? widget.currentItemWidth
-              : widget.otherItemWidth,
-          height: (i == widget.currentIndex)
-              ? widget.currentItemHeight
-              : widget.otherItemHeight,
+          margin: widget.margin ?? EdgeInsets.all(5),
+          width: getDotSize(index),
+          height: getDotSize(index),
         ),
       );
     }
