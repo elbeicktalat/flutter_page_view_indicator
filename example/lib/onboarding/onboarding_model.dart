@@ -3,5 +3,9 @@ class OnBoardingModel {
   String title;
   String description;
 
-  OnBoardingModel({this.image, this.title, this.description});
+  OnBoardingModel({
+    required this.image,
+    required this.title,
+    required this.description,
+  });
 }

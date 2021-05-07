@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
           "Now Were up in the big leagues gettingour turn at bat. The Brady bunch that's the why we brad bunch",
     ),
   ];
-  PageController _pageController;
+  PageController? _pageController;
   int currentIndex = 0;
 
   @override
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     super.dispose();
-    _pageController.dispose();
+    _pageController!.dispose();
   }
 
   @override
