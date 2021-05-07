@@ -9,7 +9,7 @@ To get started you need to install our plugin and that's very easy
 1) add this to your packages pubspec.yaml file: 
 ```yaml
 dependencies:
-  flutter_page_view_indicator: ^0.0.3
+  flutter_page_view_indicator: ^0.0.5
 ```
 
 2) Install it 
@@ -64,14 +64,12 @@ This an Example of a full property :
 PageViewIndicator(
    length: screens.length,
    currentIndex: currentIndex,
-   currentItemColor: Colors.teal,
-   otherItemColor: Colors.grey.shade800,
-   currentItemWidth: 15,
-   currentItemHeight: 15,
-   otherItemWidth: 15,
-   otherItemHeight: 15,
-   indicatorMargin: EdgeInsets.all(5),
-   borderRadius: BorderRadius.circular(9999),
+   currentColor: Colors.teal,
+   otherColor: Colors.grey.shade800,
+   currentSize: 15,
+   otherSize: 15,
+   margin: EdgeInsets.all(5),
+   borderRadius: 9999.0,
    alignment: MainAxisAlignment.center,
    animationDuration: Duration(milliseconds: 750),
    direction: Axis.horizontal,
